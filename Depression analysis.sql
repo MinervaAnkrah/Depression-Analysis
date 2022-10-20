@@ -44,3 +44,18 @@ Select
 From depression_excel de
 where depressed = 1 && sex=0
 group by age, sex;
+
+-- finding the marriage status and number of people in household for both genders
+Select 
+	if(sex=1,'male','female') as gender, round(avg(total_members),0) as total_members, Number_children,
+    (living_expenses+other_expenses+farm_expenses) as total_expenses,
+    (lasting_investment + no_lasting_investmen+gained_asset+durable_asset+save_asset+incoming_agricultural) as total_revenue,
+    ((lasting_investment + no_lasting_investmen+gained_asset+durable_asset+save_asset+incoming_agricultural)
+    -(living_expenses+other_expenses+farm_expenses))as net_revenue,
+    if(married=1,'Married','Not married') as marriage_status,
+    count(*) as number_depressed
+From depression_excel de
+join depression_excel_assets da
+	on de.survey_id = da. survey_id
+where depressed=1
+group by married, sex;
