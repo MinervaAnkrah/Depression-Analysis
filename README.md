@@ -1,4 +1,3 @@
-# Depression-Analysis
-Analyzing depression amongst men and women of different ages.
-
-Dataset from Kaggle
+# Portfolio Projects
+Data analysis with Excel, Python, MySQL and Tableau
+Datasets were mostly downloaded from Kaggle 
